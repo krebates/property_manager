@@ -10,8 +10,8 @@ describe Building do
   it { should_not have_valid(:city).when(*blanks) }
 
   it { should have_valid(:zip_code).when("12345") }
-  it { should_not have_valid(:zipcode).when("1234") }
-  it { should_not have_valid(:zipcode).when(*blanks) }
+  it { should_not have_valid(:zip_code).when("1234") }
+  it { should_not have_valid(:zip_code).when(*blanks) }
 
 
   # it 'should be unique' do
