@@ -25,6 +25,8 @@ feature "admin adds building information" do
     fill_in "Zip code", with: "12345"
     fill_in "Description", with: "words that describe"
     click_on "Add Building"
+    visit '/buildings'
+    expect(page).to have_content "words that describe"
   end
 
   it "creates a valid building info without description" do
