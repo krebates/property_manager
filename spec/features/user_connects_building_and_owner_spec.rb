@@ -1,6 +1,6 @@
   require 'spec_helper'
 
-  feature "User connects building with owner"
+  feature "User connects building with owner" do
 
   # As a real estate associate
   # I want to correlate an owner with buildings
@@ -12,18 +12,47 @@
 
 it "creates a valid building with owner" do
     visit '/owners/new'
-    ill_in "First name", with: "Krystle"
+    fill_in "First name", with: "Krystle"
     fill_in "Last name", with: "Bates"
     fill_in "Email", with: "krebates@gmail.com"
     click_on "Create Owner"
 
     visit '/buildings/new'
-    #Fill in each input field
     fill_in "Street address", with: "123 Great St."
     fill_in "City", with: "Great Town"
     select "HI", from: "State"
     fill_in "Zip code", with: "12345"
-    select
+    select "Bates", from: "Owner"
     click_on "Add Building"
   end
+
+
+  it "deletes an owner, primary key no longer associated with any properties" do
+    owner = FactoryGirl.create(:owner)
+
+    visit '/buildings/new'
+    fill_in "Street address", with: "123 Great St."
+    fill_in "City", with: "Great Town"
+    select "HI", from: "State"
+    fill_in "Zip code", with: "12345"
+    select "Bates", from: "Owner"
+    click_on "Add Building"
+
+    visit '/buildings/new'
+    fill_in "Street address", with: "555 Good St."
+    fill_in "City", with: "Great Town"
+    select "IL", from: "State"
+    fill_in "Zip code", with: "12395"
+    select "Bates", from: "Owner"
+    click_on "Add Building"
+
+    visit '/owners'
+    click_on 'Delete information'
+    expect(page).not_to have_content owner.last_name
+
+    visit '/buildings'
+    expect(page).not_to have_content owner.last_name
+  end
 end
+
+

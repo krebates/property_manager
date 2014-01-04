@@ -6,13 +6,12 @@ class OwnersController < ApplicationController
 
   def new
     @owner = Owner.new
-    @owners = Owner.find(:all)
   end
 
   def create
     @owner = Owner.new(owner_params)
       if @owner.save
-        redirect_to owners_path
+        redirect_to '/owners/new'
       else
         render :new
       end

@@ -2,8 +2,7 @@ require 'spec_helper'
 
 describe Owner do
 
-  # it { should have_many :buildings}
-  it { should have_many :buildings}
+  it { should have_many(:buildings).dependent(:nullify) }
 
   let(:blanks){['', nil, ' ']}
 

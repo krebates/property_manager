@@ -13,11 +13,4 @@ describe Building do
   it { should_not have_valid(:zip_code).when("1234") }
   it { should_not have_valid(:zip_code).when(*blanks) }
 
-
-  # it 'should be unique' do
-  #   building1 = FactoryGirl.build(:building)
-  #   building2 = FactoryGirl.build(:building)
-  #   expect(building1.save).to be_true
-  #   expect(building.save).to be_false
-  # end
 end

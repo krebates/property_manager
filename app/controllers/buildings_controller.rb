@@ -6,13 +6,12 @@ class BuildingsController < ApplicationController
 
   def new
     @building = Building.new
-    @buildings = Building.find(:all)
   end
 
   def create
     @building = Building.new(building_params)
       if @building.save
-        redirect_to buildings_path
+        redirect_to '/buildings/new'
       else
         render :new
       end

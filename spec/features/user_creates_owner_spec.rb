@@ -11,13 +11,26 @@ feature "User creates building owner" do
   # If I do not specify the required information, I am presented with errors
   # If I specify the required information, the owner is recorded and I am redirected to enter another new owner
 
-  it "creates a valid owner" do
+  it "creates a valid owner without company" do
     #visit the page containing form
     visit '/owners/new'
     fill_in "First name", with: "Krystle"
     fill_in "Last name", with: "Bates"
     fill_in "Email", with: "krebates@gmail.com"
     click_on "Create Owner"
+    expect(page).to have_content "Add a new owner"
+  end
+
+
+  it "creates a valid owner with company" do
+    #visit the page containing form
+    visit '/owners/new'
+    fill_in "First name", with: "Krystle"
+    fill_in "Last name", with: "Bates"
+    fill_in "Email", with: "krebates@gmail.com"
+    fill_in "Company", with: "Cool Company"
+    click_on "Create Owner"
+    expect(page).to have_content "Add a new owner"
   end
 
   it 'requires a last name' do

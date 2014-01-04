@@ -14,7 +14,20 @@ feature "admin adds building information" do
 # If I do not specify all of the required information in the required formats, the building is not recorded and I am presented with errors
 # Upon successfully creating a building, I am redirected so that I can record another building.
 
-  it "creates a valid building info" do
+  it "creates a valid building info without description" do
+    #visit the page contain new building form
+    visit '/buildings/new'
+
+    #Fill in each input field
+    fill_in "Street address", with: "123 Great St."
+    fill_in "City", with: "Great Town"
+    select "HI", from: "State"
+    fill_in "Zip code", with: "12345"
+    fill_in "Description", with: "words that describe"
+    click_on "Add Building"
+  end
+
+  it "creates a valid building info without description" do
     #visit the page contain new building form
     visit '/buildings/new'
 
