@@ -1,0 +1,18 @@
+
+<h1><%= link_to "Create Owner", new_owner_path %> <br/></h1> <hr><hr>
+
+<% @owners.each do |owner| %>
+  First Name: <%= owner.first_name %><br/><br/>
+  Last Name: <%= owner.last_name %><br/><br/>
+  Email: <%= owner.email %><br/><br/>
+  Company: <%= owner.company %><br/><br/>
+
+<%= link_to "Delete information", owner_path(owner), data: { confirm: "Are you sure?" }, method: :delete %>
+<%= link_to "Edit information", edit_owner_path(owner)%>
+
+
+  <br/><hr><hr>
+
+
+
+<% end %>
