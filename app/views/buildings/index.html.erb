@@ -6,6 +6,7 @@ City: <%= building.city %><br/>
 State: <%= building.state %><br/>
 Zip Code: <%= building.zip_code %><br/>
 Description: <%= building.description %><br/>
+Owner: <%= building.owner.last_name if building.owner%><br/><br/>
 
 <%= link_to "Delete information", building_path(building), data: { confirm: "Are you sure?" }, method: :delete %>
 

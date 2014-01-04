@@ -6,6 +6,7 @@ class OwnersController < ApplicationController
 
   def new
     @owner = Owner.new
+    @owners = Owner.find(:all)
   end
 
   def create
