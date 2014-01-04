@@ -1,0 +1,16 @@
+<%= link_to "Create new building", new_building_path %> <br/> <hr><hr>
+
+<% @buildings.each do |building| %>
+  Street Address: <%= building.street_address %><br/>
+City: <%= building.city %><br/>
+State: <%= building.state %><br/>
+Zip Code: <%= building.zip_code %><br/>
+Description: <%= building.description %><br/>
+
+<%= link_to "Delete information", building_path(building), data: { confirm: "Are you sure?" }, method: :delete %>
+
+  <br/><hr><hr>
+
+
+
+<% end %>
