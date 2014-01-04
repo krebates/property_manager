@@ -22,7 +22,7 @@ feature "admin adds building information" do
     fill_in "Street address", with: "123 Great St."
     fill_in "City", with: "Great Town"
     select "HI", from: "State"
-    fill_in "Postal code", with: "12345"
+    fill_in "Zip code", with: "12345"
     click_on "Add Building"
   end
 
