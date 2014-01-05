@@ -41,6 +41,8 @@ feature "admin adds building information" do
     select "HI", from: "State"
     fill_in "Zip code", with: "12345"
     click_on "Add Building"
+    visit '/buildings'
+    expect(page).to have_content "123 Great St."
   end
 
   it 'requires a city' do

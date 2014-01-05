@@ -24,6 +24,10 @@ it "creates a valid building with owner" do
     fill_in "Zip code", with: "12345"
     select "Bates", from: "Owner"
     click_on "Add Building"
+
+    visit '/buildings'
+    expect(page).to have_content "123 Great St."
+    expect(page).to have_content "Bates"
   end
 
 
@@ -51,6 +55,7 @@ it "creates a valid building with owner" do
     expect(page).not_to have_content owner.last_name
 
     visit '/buildings'
+    expect(page).not_to have_content "Bates"
     expect(page).not_to have_content owner.last_name
   end
 end
